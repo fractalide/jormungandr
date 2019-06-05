@@ -17,12 +17,10 @@ main() {
 
     test -f Cargo.lock || cargo generate-lockfile
 
-    # TODO Update this to build the artifacts that matter to you
-    cross rustc --bin jormungandr --target $TARGET --release -- -C lto
-    cross rustc --bin jcli        --target $TARGET --release -- -C lto
-
+    cross build --target $TARGET --release
+    # once `cargo --out-dir` reaches stable, remove the next two lines.
     cp target/$TARGET/release/jormungandr $stage/
-    cp target/$TARGET/release/jcli $stage/
+    cp target/$TARGET/release/$CLI_NAME $stage/
 
     cd $stage
     tar czf $src/$CRATE_NAME-$TRAVIS_TAG-$TARGET.tar.gz *
