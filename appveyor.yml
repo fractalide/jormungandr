@@ -5,7 +5,9 @@ environment:
   global:
     RUST_VERSION: stable
 
-    CRATE_NAME: jormungandr
+    CRATE_NAME: jormungandr-luceo
+    PRODUCTION_ADDRESS_PREFIX: ceo
+    TEST_ADDRESS_PREFIX: teo
 
   # TODO These are all the build jobs. Adjust as necessary. Comment out what you
   # don't need
@@ -53,7 +55,7 @@ before_deploy:
 deploy:
   artifact: /.*\.zip/
   auth_token:
-    secure: g8zro/la2pNmg9GTWATDxfw04FaQ5MUyJPrZMWYRX2vXTmgsyjTDS62dOQU2EFoy
+    secure: 7+qbV4tgaaet1JDB67gvJ/GnbvJYYrDXwmQ3Xzwgrv6Jfnb7UgRHTZdhY/uZIBgj
   description: ''
   on:
     # TODO Here you can pick which targets will generate binary releases
